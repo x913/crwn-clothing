@@ -20,7 +20,7 @@
     }
   }
 
-  & .large {
+  &.large {
     height: 380px;
   }
 
@@ -35,8 +35,8 @@
   .background-image {
     width: 100%;
     height: 100%;
-    background-position: center;
     background-size: cover;
+    background-position: center;
   }
 
   .content {
