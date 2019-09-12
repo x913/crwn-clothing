@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.styles.scss';
-// import SVG (scalable vector graphic) as ReactComponent with special React syntax
 import { ReactComponent as Logo } from '../../assets/crown.svg'
+import { auth } from './../../firebase/firebase.utils';
 
-const Header = () => (
+const Header = ({ currentUser }) => (
     <div className="header">
         <Link to="/" className="logo-container">
             <Logo className="logo" />
@@ -12,7 +12,11 @@ const Header = () => (
         <div className="options">
             <Link to="/shop" className="option">SHOP</Link>
             <Link to="/contacts" className="option">CONTACT</Link>
-            <Link to="/signin" className="option">SIGNIN</Link>
+            {
+                currentUser ?
+                    <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
+                    <Link to="/signin" className="option">SIGN IN</Link>
+            }
         </div>
     </div>
 )
